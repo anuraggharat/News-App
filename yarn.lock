@@ -1152,6 +1152,11 @@
     react-is "^16.13.0"
     use-subscription "^1.4.0"
 
+"@react-navigation/material-bottom-tabs@^5.1.10":
+  version "5.1.10"
+  resolved "https://registry.yarnpkg.com/@react-navigation/material-bottom-tabs/-/material-bottom-tabs-5.1.10.tgz#3374ef1806054ff94189f7337976a1b716e01812"
+  integrity sha512-CFDnzK9ia0Fw2o9EBviIIZhOil8Rlr0F/rESPyCpFjqGSssjdQ5u7szUzy7UoxXo4VecYpYmntAA/zqHoy4zRw==
+
 "@react-navigation/native@^5.1.7":
   version "5.1.7"
   resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.1.7.tgz#929815726504007d73ad77301e4659e910fe8d41"
@@ -1165,6 +1170,14 @@
   integrity sha512-Gay9yCrE2xuvUUJcbG+giqnh2ZAPyYecO5RJ3tXDztmT+UaJoyHLSfyjkb74gSjij684udtzUKkoXGBbgcANhg==
   dependencies:
     nanoid "^3.0.2"
+
+"@react-navigation/stack@^5.2.14":
+  version "5.2.14"
+  resolved "https://registry.yarnpkg.com/@react-navigation/stack/-/stack-5.2.14.tgz#ab8cfafdb4401862ca0e42ccedf16551ff4132b5"
+  integrity sha512-hVzkqcAXPrZ10Gjtlzl8+Ad9x1p0n0Vn2YTff4xSlZkVVgKcHyTAWg59NL93fvq9T1zJXOCJZ0hoHiFMmNmAlA==
+  dependencies:
+    color "^3.1.2"
+    react-native-iphone-x-helper "^1.2.1"
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
@@ -4387,6 +4400,11 @@ react-native-gesture-handler@~1.6.0:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-iphone-x-helper@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
+  integrity sha512-/VbpIEp8tSNNHIvstuA3Swx610whci1Zpc9mqNkqn14DkMbw+ORviln2u0XyHG1kPvvwTNGZY6QpeFwxYaSdbQ==
 
 react-native-paper@^3.8.0:
   version "3.8.0"

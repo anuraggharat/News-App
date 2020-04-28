@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import Home from './Screens/Home'
+import Profile from './Screens/Profile'
 
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
+const Tab = createMaterialBottomTabNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   const [country,setCountry] = useState("us")
@@ -17,20 +24,19 @@ export default function App() {
 
   }
   
-  
-  useEffect(()=>
+useEffect(()=>
   {fetchData()}
     
   , [])
-  
-  
+    
   return (
-
-
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    {loading ? <Text>LOading</Text>:<Text>LOaded</Text>}
-    </View>
+    <NavigationContainer>
+ 
+      <Tab.Navigator>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Settings" component={Profile} />
+    </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
