@@ -3,9 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Home from './Screens/Home'
 import Profile from './Screens/Profile'
+import Channels from './Screens/Channels'
 import Search from './Screens/Search'
 
 
@@ -41,29 +41,29 @@ useEffect(()=>
             let iconName;
 
             if (route.name === 'Home') {
-              iconName = focused
-                ? 'ios-home'
-                : 'md-home';
+              iconName ='ios-home';
             } else if (route.name === 'Profile') {
-              iconName = focused ? 'ios-man' : 'ios-list';
+              iconName ='ios-man';
             }
             else if (route.name === 'Search') {
-              iconName = focused ? 'ios-search' : 'ios-reorder';
+              iconName = 'ios-search';
             }
-
-            // You can return any component that you like here!
-             
+            else if (route.name === 'Channels') {
+              iconName = 'ios-megaphone';
+            }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
         tabBarOptions={{
-          activeTintColor: 'tomato',
+          activeTintColor: 'white',
           inactiveTintColor: 'gray',
         }}
       >
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Search" component={Search} />
-        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen name="Home" component={Home} options={{ title: 'My home' }}/>
+        <Tab.Screen name="Search" component={Search} options={{ title: 'My home' }}/>
+        <Tab.Screen name="Profile" component={Profile} options={{ title: 'My home' }}/>
+        <Tab.Screen name="Channels" component={Channels} options={{ title: 'My home' }}/>
+
       </Tab.Navigator>
     </NavigationContainer>
   );
