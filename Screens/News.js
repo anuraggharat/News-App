@@ -4,6 +4,7 @@ import {getHeadLines} from '../API/news'
 import { Button } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { Component } from 'react'
+import Article from '../Components/Article';
 
 export default class News extends Component {
   
@@ -11,7 +12,8 @@ export default class News extends Component {
     super(props)
     this.state={
       articles:[],
-      loading:true
+      loading:true,
+      refreshing:true
     }
     this.fetchNews=this.fetchNews.bind(this)
   }
@@ -23,24 +25,32 @@ export default class News extends Component {
   fetchNews(){
     getHeadLines()
       .then(articles=>this.setState({
-        articles:articles,
-        loading:false
+        articles,
+        loading:false,
+        refreshing:false
       }))
       .catch(err=>console.log(err))
-      .finally(()=>console.log(this.state.articles))
+      
+  }
+  handleRefresh(){
+    this.setState({
+      refreshing:true
+    },()=>this.fetchNews())
   }
   
   render() {
     return (
-      <View>
-          <Text> This is news section </Text>
-          <SafeAreaView>
-            <ScrollView>
+      <View>          
+          <FlatList
+            data={this.state.articles}
+            renderItem={({ item }) => <Article article={item} />}
+            keyExtractor={item => item.url}
+            refreshing={this.state.refreshing}
+            onRefresh={this.handleRefresh.bind(this)}
+          />
             
-            <Text></Text>
-            
-            </ScrollView>
-          </SafeAreaView>
+          
+          
 <Text>
 </Text>
       </View>)
