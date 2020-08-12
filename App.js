@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import HomeScreen from "./app/Screens/HomeScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -10,7 +11,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <View style={styles.container}>
-        <Text>Hello</Text>
+        <HomeScreen></HomeScreen>
       </View>
     </NavigationContainer>
   );
