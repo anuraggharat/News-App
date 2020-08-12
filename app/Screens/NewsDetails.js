@@ -7,7 +7,6 @@ import {
   ScrollView,
   ImageBackground,
   Linking,
-  TouchableHighlight,
   Button,
 } from "react-native";
 import colors from "../config/colors";
@@ -16,10 +15,8 @@ import moment from "moment";
 
 import { EvilIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
-import { color } from "react-native-reanimated";
 
 export default function NewsDetails({ navigation, route }) {
-  console.log(route);
   const {
     author,
     description,
