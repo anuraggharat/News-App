@@ -1,29 +1,31 @@
 import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import moment from "moment";
 import colors from "../config/colors";
 
-export default function NewsCard({ article, image }) {
+export default function NewsCard({ article, image, onPress }) {
   const { publishedAt } = article;
   const time = moment(publishedAt || moment.now()).fromNow();
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Image source={{ uri: image }} style={styles.image} />
-      </View>
-      <View style={styles.details}>
-        <Text style={styles.primaryText}>{article.title}</Text>
-      </View>
-      <View style={styles.footer}>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.container}>
         <View>
-          <Text style={styles.secondaryText}>{article.author}</Text>
+          <Image source={{ uri: image }} style={styles.image} />
         </View>
-        <View>
-          <Text style={styles.secondaryText}>{time}</Text>
+        <View style={styles.details}>
+          <Text style={styles.primaryText}>{article.title}</Text>
+        </View>
+        <View style={styles.footer}>
+          <View>
+            <Text style={styles.secondaryText}>{article.author}</Text>
+          </View>
+          <View>
+            <Text style={styles.secondaryText}>{time}</Text>
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 const styles = StyleSheet.create({

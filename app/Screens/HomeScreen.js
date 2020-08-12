@@ -5,7 +5,7 @@ import Loader from "../Components/Loader";
 import NewsCard from "../Components/NewsCard";
 import Screen from "../Components/Screen";
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -32,7 +32,11 @@ export default function HomeScreen() {
           refreshing={loading}
           keyExtractor={(item) => item.url}
           renderItem={({ item }) => (
-            <NewsCard article={item} image={item.urlToImage} />
+            <NewsCard
+              article={item}
+              image={item.urlToImage}
+              onPress={() => navigation.navigate("Details", item)}
+            />
           )}
         ></FlatList>
       </View>
