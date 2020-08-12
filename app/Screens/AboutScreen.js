@@ -5,7 +5,7 @@ import Loader from "../Components/Loader";
 import NewsCard from "../Components/NewsCard";
 import Screen from "../Components/Screen";
 
-export default function HomeScreen() {
+export default function AboutScreen() {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -24,23 +24,17 @@ export default function HomeScreen() {
   }, []);
   return (
     <Screen style={styles.container}>
-      <View>
-        <FlatList
-          data={news}
-          showsHorizontalScrollIndicator={false}
-          onRefresh={() => getNews()}
-          refreshing={loading}
-          keyExtractor={(item) => item.url}
-          renderItem={({ item }) => (
-            <NewsCard article={item} image={item.urlToImage} />
-          )}
-        ></FlatList>
+      <View styles={styles.mainScreen}>
+        <Text>About</Text>
       </View>
     </Screen>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 10,
+    padding: 10,
+  },
+  mainScreen: {
+    padding: 20,
   },
 });

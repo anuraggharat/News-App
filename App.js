@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import HomeScreen from "./app/Screens/HomeScreen";
-
-const Tab = createMaterialBottomTabNavigator();
+import { NavigationContainer } from "@react-navigation/native";
+import AppNavigator from "./app/navigation/AppNavigator";
+import navigationTheme from "./app/config/navigationTheme";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <View style={styles.container}>
-        <HomeScreen></HomeScreen>
-      </View>
+    <NavigationContainer theme={navigationTheme}>
+      <AppNavigator />
     </NavigationContainer>
   );
 }
