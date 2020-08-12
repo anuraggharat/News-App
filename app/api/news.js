@@ -8,3 +8,11 @@ export async function getHeadLines() {
   //console.log(result);
   return result.data.articles;
 }
+
+export async function getSearchNews(search) {
+  let result = await axios.get(
+    "https://newsapi.org/v2/everything?q=bitcoin&apiKey=741f9880a09c4895b6a87559756e587c"
+  );
+  //console.log(result);
+  return result.data.articles;
+}

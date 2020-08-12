@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
-import HomeScreen from "../Screens/HomeScreen";
 import AboutScreen from "../Screens/AboutScreen";
 import SearchNewsScreen from "../Screens/SearchNewsScreen";
 import HomeScreenNavigator from "./HomeScreenNavigator";
