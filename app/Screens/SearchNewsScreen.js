@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, FlatList, TextInput } from "react-native";
-import { getHeadLines, getSearchNews } from "../api/news";
+import {
+  View,
+  FlatList,
+  StyleSheet,
+  TextInput,
+  TouchableWithoutFeedback,
+} from "react-native";
+import { getSearchNews } from "../api/news";
 import Loader from "../Components/Loader";
+
 import NewsCard from "../Components/NewsCard";
 import Screen from "../Components/Screen";
 import colors from "../config/colors";
@@ -9,11 +16,17 @@ import { AntDesign } from "@expo/vector-icons";
 
 export default function SearchNewsScreen() {
   const [search, setSearch] = useState("bitcoin");
+  const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const fetchTheNews = () => {
-    getSearchNews().then((res) => console.log(res));
+    getSearchNews(search)
+      .then((res) => setNews(res))
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false));
   };
 
+  console.log(search);
   useEffect(() => {
     fetchTheNews();
   }, []);
@@ -27,12 +40,30 @@ export default function SearchNewsScreen() {
             keyboardType="web-search"
             autoCapitalize="none"
             placeholder="for ex: bitcoin"
+            onChangeText={(text) => setSearch(text)}
           />
-          <View style={styles.icon}>
-            <AntDesign name="search1" size={20} color={colors.primary} />
-          </View>
+          <TouchableWithoutFeedback onPress={() => fetchTheNews(search)}>
+            <View style={styles.icon}>
+              <AntDesign name="search1" size={20} color={colors.primary} />
+            </View>
+          </TouchableWithoutFeedback>
         </View>
-        <View style={styles.feed}></View>
+        <View style={styles.feed}>
+          <FlatList
+            data={news}
+            showsHorizontalScrollIndicator={false}
+            onRefresh={() => fetchTheNews()}
+            refreshing={loading}
+            keyExtractor={(item) => item.url}
+            renderItem={({ item }) => (
+              <NewsCard
+                article={item}
+                image={item.urlToImage}
+                onPress={() => navigation.navigate("Details", item)}
+              />
+            )}
+          ></FlatList>
+        </View>
       </View>
     </Screen>
   );
@@ -44,7 +75,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
   },
   feed: {
-    margin: 50,
+    marginTop: 20,
   },
   icon: {
     justifyContent: "center",

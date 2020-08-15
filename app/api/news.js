@@ -11,7 +11,7 @@ export async function getHeadLines() {
 
 export async function getSearchNews(search) {
   let result = await axios.get(
-    "https://newsapi.org/v2/everything?q=bitcoin&apiKey=741f9880a09c4895b6a87559756e587c"
+    `https://newsapi.org/v2/everything?q=${search}&apiKey=741f9880a09c4895b6a87559756e587c`
   );
   //console.log(result);
   return result.data.articles;
