@@ -4,8 +4,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
 import AboutScreen from "../Screens/AboutScreen";
-import SearchNewsScreen from "../Screens/SearchNewsScreen";
 import HomeScreenNavigator from "./HomeScreenNavigator";
+import SearchNavigator from "./SearchNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +22,7 @@ const AppNavigator = () => (
     />
     <Tab.Screen
       name="Search"
-      component={SearchNewsScreen}
+      component={SearchNavigator}
       options={{
         tabBarIcon: ({ color, size }) => (
           <AntDesign name="search1" size={size} color={color} />

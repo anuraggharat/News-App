@@ -14,7 +14,7 @@ import Screen from "../Components/Screen";
 import colors from "../config/colors";
 import { AntDesign } from "@expo/vector-icons";
 
-export default function SearchNewsScreen() {
+export default function SearchNewsScreen({ navigation }) {
   const [search, setSearch] = useState("bitcoin");
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
